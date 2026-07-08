@@ -1,0 +1,402 @@
+/* importa fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+/* ================================
+   RESET & VARIÁVEIS
+   ================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --preto: #0a0a0a;
+  --branco: #f5f4f0;
+  --cinza: #8a8a8a;
+  --cinza-claro: #e8e6e0;
+  --accent: #c8b89a;
+  --fonte-display: 'Bebas Neue', sans-serif;
+  --fonte-corpo: 'DM Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  background: var(--branco);
+  color: var(--preto);
+  min-height: 100vh;
+}
+
+/* ================================
+   HEADER
+   ================================ */
+header {
+  border-bottom: 1px solid var(--preto);
+  padding: 0 2.5rem;
+  position: sticky;
+  top: 0;
+  background: var(--branco);
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: var(--fonte-display);
+  font-size: 2rem;
+  letter-spacing: 0.12em;
+  color: var(--preto);
+}
+
+.header-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--cinza);
+  text-transform: uppercase;
+}
+
+/* ================================
+   HERO
+   ================================ */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  min-height: 340px;
+  border-bottom: 1px solid var(--preto);
+  overflow: hidden;
+}
+
+.hero-text {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: var(--preto);
+  color: var(--branco);
+}
+
+.hero-sub {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.hero-title {
+  font-family: var(--fonte-display);
+  font-size: clamp(5rem, 12vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--branco);
+}
+
+.hero-divider {
+  background: var(--preto);
+  width: 1px;
+}
+
+.hero-right {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2rem;
+  background: var(--cinza-claro);
+}
+
+.hero-desc {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--preto);
+  max-width: 280px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: var(--preto);
+  color: var(--branco);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--preto);
+  transition: background 0.25s, color 0.25s;
+  width: fit-content;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--preto);
+}
+
+/* ================================
+   MAIN LAYOUT
+   ================================ */
+main {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  min-height: calc(100vh - 64px - 340px - 56px);
+  border-bottom: 1px solid var(--preto);
+}
+
+/* ================================
+   RÓTULOS DE SEÇÃO
+   ================================ */
+.secao-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.secao-titulo {
+  font-family: var(--fonte-display);
+  font-size: 2.4rem;
+  letter-spacing: 0.06em;
+  color: var(--preto);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+/* ================================
+   FORMULÁRIO
+   ================================ */
+.secao-form {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--preto);
+  background: var(--branco);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.input-group label {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  font-weight: 500;
+}
+
+input {
+  padding: 0.75rem 0;
+  border: none;
+  border-bottom: 1px solid var(--preto);
+  border-radius: 0;
+  font-size: 0.95rem;
+  font-family: var(--fonte-corpo);
+  font-weight: 300;
+  background: transparent;
+  color: var(--preto);
+  transition: border-color 0.2s;
+  width: 100%;
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--cinza);
+  font-style: italic;
+}
+
+input:focus {
+  border-bottom-color: var(--accent);
+}
+
+form {
+  margin-bottom: 1.5rem;
+}
+
+button[type="submit"] {
+  margin-top: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--preto);
+  color: var(--branco);
+  border: 1px solid var(--preto);
+  font-family: var(--fonte-corpo);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.25s, color 0.25s;
+}
+
+button[type="submit"]:hover {
+  background: transparent;
+  color: var(--preto);
+}
+
+#mensagem {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  min-height: 1.5rem;
+}
+
+/* ================================
+   LISTA / GRID DE CARDS
+   ================================ */
+.secao-lista {
+  padding: 3rem 2.5rem;
+  background: var(--branco);
+}
+
+#lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--cinza-claro);
+  border-left: 1px solid var(--cinza-claro);
+}
+
+/* card individual */
+.card {
+  border-bottom: 1px solid var(--cinza-claro);
+  border-right: 1px solid var(--cinza-claro);
+  padding: 1.5rem;
+  position: relative;
+  transition: background 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.card:hover {
+  background: var(--cinza-claro);
+}
+
+.card h3 {
+  font-family: var(--fonte-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: var(--preto);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.card p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--cinza);
+  letter-spacing: 0.04em;
+}
+
+.card p span {
+  color: var(--preto);
+  font-weight: 500;
+}
+
+.card .card-id {
+  font-size: 0.68rem;
+  color: var(--cinza-claro);
+  letter-spacing: 0.1em;
+  filter: brightness(0.7);
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.card .btn-remover {
+  margin-top: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  background: transparent;
+  color: var(--cinza);
+  border: 1px solid var(--cinza-claro);
+  font-family: var(--fonte-corpo);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: fit-content;
+}
+
+.card .btn-remover:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+  background: transparent;
+}
+
+/* estado vazio */
+#lista:empty::before {
+  content: "Nenhuma peça cadastrada ainda.";
+  font-size: 0.85rem;
+  color: var(--cinza);
+  font-style: italic;
+  padding: 2rem;
+  grid-column: 1 / -1;
+  border-bottom: 1px solid var(--cinza-claro);
+  border-right: 1px solid var(--cinza-claro);
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+footer {
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--cinza-claro);
+}
+
+footer span {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  font-weight: 400;
+}
+
+/* ================================
+   RESPONSIVO
+   ================================ */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .hero-divider { display: none; }
+
+  .hero-right { min-height: 200px; }
+
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .secao-form {
+    border-right: none;
+    border-bottom: 1px solid var(--preto);
+  }
+
+  header { padding: 0 1.5rem; }
+  .hero-text, .hero-right { padding: 2rem 1.5rem; }
+  .secao-form, .secao-lista { padding: 2rem 1.5rem; }
+}

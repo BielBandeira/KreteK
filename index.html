@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KRETEK</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <span class="header-tag">suposto menu</span>
+      <h1 class="logo">KRETEK</h1>
+      <span class="header-tag right">suposto menu</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-sub">Por Sofia Eufrasino</p>
+      <h2 class="hero-title">NOVO<br>DROP</h2>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-right">
+      <p class="hero-desc">projeto experimental entre consumo e identidade visual.</p>
+      <a href="#catalogo" class="btn-primary">VER CATÁLOGO</a>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- SEÇÃO: ADICIONAR ROUPA -->
+    <section class="secao-form" id="adicionar">
+      <div class="secao-label">01 — ADICIONAR</div>
+      <h2 class="secao-titulo">Nova peça</h2>
+
+      <form id="form-adicionar">
+        <div class="input-group">
+          <label>Nome da peça</label>
+          <input type="text" id="input-nome" placeholder="ex: camisa polo" required />
+        </div>
+        <div class="input-group">
+          <label>Cores</label>
+          <input type="text" id="input-cor" placeholder="ex: azul, branca" required />
+        </div>
+        <div class="input-group">
+          <label>Tamanhos</label>
+          <input type="text" id="input-tamanho" placeholder="ex: P, M, G" />
+        </div>
+        <button type="submit">ADICIONAR PEÇA →</button>
+      </form>
+
+      <p id="mensagem"></p>
+    </section>
+
+    <!-- SEÇÃO: CATÁLOGO -->
+    <section class="secao-lista" id="catalogo">
+      <div class="secao-label">02 — CATÁLOGO</div>
+      <h2 class="secao-titulo">Peças cadastradas</h2>
+      <div id="lista"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>KRETEK © 2026</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
