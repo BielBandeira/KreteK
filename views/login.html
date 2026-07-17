@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KRETEK — Login</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <span class="header-tag">backoffice</span>
+      <h1 class="logo">KRETEK</h1>
+      <span class="header-tag right">acesso restrito</span>
+    </div>
+  </header>
+
+  <main class="main-solo">
+    <section class="secao-form secao-login">
+      <div class="secao-label">ACESSO</div>
+      <h2 class="secao-titulo">Entrar</h2>
+
+      <form id="form-login">
+        <div class="input-group">
+          <label>Usuário</label>
+          <input type="text" id="input-usuario" required autofocus />
+        </div>
+        <div class="input-group">
+          <label>Senha</label>
+          <input type="password" id="input-senha" required />
+        </div>
+        <button type="submit">ENTRAR →</button>
+      </form>
+
+      <p id="mensagem"></p>
+    </section>
+  </main>
+
+  <footer>
+    <span>KRETEK © 2026</span>
+  </footer>
+
+  <script src="/login.js"></script>
+</body>
+</html>

@@ -10,6 +10,14 @@
   padding: 0;
 }
 
+/* garante que o atributo HTML "hidden" sempre esconda o elemento, mesmo quando
+   alguma regra abaixo define "display" pra esse mesmo seletor (ex: display: grid/flex) —
+   sem isso, a regra de display do autor vence o [hidden] do navegador e o elemento
+   fica visível mesmo "escondido". */
+[hidden] {
+  display: none !important;
+}
+
 :root {
   --preto: #0a0a0a;
   --branco: #f5f4f0;
@@ -63,6 +71,29 @@ header {
   letter-spacing: 0.2em;
   color: var(--cinza);
   text-transform: uppercase;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--preto);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-logout:hover {
+  background: var(--preto);
+  color: var(--branco);
+}
+
+/* ================================
+   LOGIN
+   ================================ */
+.secao-login {
+  max-width: 380px;
+  margin: 0 auto;
+  border-right: none !important;
 }
 
 /* ================================
@@ -152,6 +183,11 @@ main {
   grid-template-columns: 380px 1fr;
   min-height: calc(100vh - 64px - 340px - 56px);
   border-bottom: 1px solid var(--preto);
+}
+
+/* variante sem coluna de formulário (página pública, login) */
+main.main-solo {
+  grid-template-columns: 1fr;
 }
 
 /* ================================
@@ -285,8 +321,33 @@ button[type="submit"]:hover {
   gap: 0.4rem;
 }
 
+/* cards do catálogo público são links pra página da peça */
+#lista .card {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
 .card:hover {
   background: var(--cinza-claro);
+}
+
+.card-foto {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  background: var(--cinza-claro);
+}
+
+.card-foto.card-sem-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cinza);
 }
 
 .card h3 {
@@ -310,6 +371,13 @@ button[type="submit"]:hover {
 .card p span {
   color: var(--preto);
   font-weight: 500;
+}
+
+.card .card-preco {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--preto);
+  letter-spacing: 0.02em;
 }
 
 .card .card-id {
@@ -353,6 +421,99 @@ button[type="submit"]:hover {
   grid-column: 1 / -1;
   border-bottom: 1px solid var(--cinza-claro);
   border-right: 1px solid var(--cinza-claro);
+}
+
+/* ================================
+   PÁGINA DE DETALHE DA PEÇA
+   ================================ */
+.btn-voltar {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--preto);
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--preto);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-voltar:hover {
+  background: var(--preto);
+  color: var(--branco);
+}
+
+.secao-produto {
+  padding: 3rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.produto-foto {
+  background: var(--cinza-claro);
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.produto-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.produto-sem-foto {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cinza);
+}
+
+.produto-info h2 {
+  font-family: var(--fonte-display);
+  font-size: 2.6rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.produto-info p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--cinza);
+  margin-bottom: 0.6rem;
+}
+
+.produto-descricao {
+  color: var(--preto) !important;
+  line-height: 1.6;
+  margin: 1rem 0 !important;
+}
+
+.produto-info .btn-primary {
+  border: 1px solid var(--preto);
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+#produto-erro {
+  padding: 3rem 2.5rem;
+  font-size: 0.9rem;
+  color: var(--cinza);
+}
+
+@media (max-width: 640px) {
+  .secao-produto {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
 }
 
 /* ================================

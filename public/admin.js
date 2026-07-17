@@ -1,11 +1,15 @@
 // endereço base da API — muda aqui se mudar a porta
 const API = "http://localhost:5000"
 
+// formata número para "R$ 99,90"
+function formatarPreco(preco) {
+  return preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+}
+
 // ================================
 // CARREGAR E RENDERIZAR ROUPAS
 // ================================
 
-// busca todas as roupas na API e monta os cards na tela
 async function carregarRoupas() {
   const resposta = await fetch(`${API}/roupas`)
   const roupas = await resposta.json()
@@ -18,13 +22,18 @@ async function carregarRoupas() {
   }
 }
 
-// cria e retorna o elemento HTML de um card a partir de um objeto roupa
 function criarCard(roupa) {
   const card = document.createElement("div")
   card.className = "card"
 
+  const foto = roupa.foto
+    ? `<img class="card-foto" src="${roupa.foto}" alt="${roupa.nome}" />`
+    : `<div class="card-foto card-sem-foto">sem foto</div>`
+
   card.innerHTML = `
+    ${foto}
     <h3>${roupa.nome}</h3>
+    <p class="card-preco">${formatarPreco(roupa.preco)}</p>
     <p>Cor: ${roupa.cor}</p>
     <p>Tamanho: ${roupa.tamanho}</p>
     <p class="card-id">id: ${roupa.id}</p>
@@ -39,31 +48,36 @@ function criarCard(roupa) {
 // ================================
 
 document.getElementById("form-adicionar").addEventListener("submit", async (e) => {
-  // evita o comportamento padrão do form (recarregar a página)
   e.preventDefault()
 
-  // lê os valores dos campos
   const nome = document.getElementById("input-nome").value
   const cor = document.getElementById("input-cor").value
     .split(",")
-    .map(s => s.trim()) // transforma "azul, branca" em ["azul", "branca"]
+    .map(s => s.trim())
 
   const tamanhoInput = document.getElementById("input-tamanho").value
   const tamanho = tamanhoInput
     ? tamanhoInput.split(",").map(s => s.trim())
-    : ["G", "M", "P"] // usa tamanho padrão se o campo estiver vazio
+    : ["G", "M", "P"]
 
-  // envia os dados para a API
+  const preco = Number(document.getElementById("input-preco").value)
+  const foto = document.getElementById("input-foto").value
+  const descricao = document.getElementById("input-descricao").value
+
   const resposta = await fetch(`${API}/roupas`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ nome, cor, tamanho })
+    body: JSON.stringify({ nome, cor, tamanho, preco, foto, descricao })
   })
+
+  if (resposta.status === 401) {
+    return redirecionarParaLogin()
+  }
 
   if (resposta.ok) {
     document.getElementById("form-adicionar").reset()
     mostrarMensagem("Roupa adicionada!")
-    carregarRoupas() // atualiza a lista
+    carregarRoupas()
   }
 })
 
@@ -72,16 +86,33 @@ document.getElementById("form-adicionar").addEventListener("submit", async (e) =
 // ================================
 
 async function deletarRoupa(id) {
-  await fetch(`${API}/roupas/${id}`, { method: "DELETE" })
+  const resposta = await fetch(`${API}/roupas/${id}`, { method: "DELETE" })
+
+  if (resposta.status === 401) {
+    return redirecionarParaLogin()
+  }
+
   mostrarMensagem("Roupa removida.")
-  carregarRoupas() // atualiza a lista
+  carregarRoupas()
 }
+
+// ================================
+// SESSÃO / LOGOUT
+// ================================
+
+function redirecionarParaLogin() {
+  window.location.href = "/login"
+}
+
+document.getElementById("btn-sair").addEventListener("click", async () => {
+  await fetch(`${API}/logout`, { method: "POST" })
+  redirecionarParaLogin()
+})
 
 // ================================
 // FEEDBACK PARA O USUÁRIO
 // ================================
 
-// exibe uma mensagem por 3 segundos e depois some
 function mostrarMensagem(texto) {
   const el = document.getElementById("mensagem")
   el.textContent = texto
@@ -92,5 +123,4 @@ function mostrarMensagem(texto) {
 // INICIALIZAÇÃO
 // ================================
 
-// carrega as roupas assim que a página abre
 carregarRoupas()

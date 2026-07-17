@@ -1,0 +1,5 @@
+node_modules/
+kretek.db
+kretek.db-wal
+kretek.db-shm
+.env

@@ -1,0 +1,18 @@
+{
+  "name": "kretek",
+  "version": "1.0.0",
+  "description": "Site do coletivo artistico KRETEK",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "gerar-hash": "node scripts/gerar-hash.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.11.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "express-session": "^1.19.0"
+  }
+}
