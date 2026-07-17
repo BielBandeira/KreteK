@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KRETEK — Peça</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="btn-voltar">← Voltar</a>
+      <h1 class="logo">KRETEK</h1>
+      <span class="header-tag right">suposto menu</span>
+    </div>
+  </header>
+
+  <main class="main-solo">
+
+    <!-- SEÇÃO: DETALHE DA PEÇA -->
+    <section id="produto" class="secao-produto" hidden>
+      <div class="produto-foto">
+        <img id="produto-img" src="" alt="" hidden />
+        <div id="produto-sem-foto" class="produto-sem-foto">sem foto</div>
+      </div>
+      <div class="produto-info">
+        <h2 id="produto-nome"></h2>
+        <p id="produto-preco" class="card-preco"></p>
+        <p id="produto-descricao" class="produto-descricao"></p>
+        <p>Cor: <span id="produto-cor"></span></p>
+        <p>Tamanho: <span id="produto-tamanho"></span></p>
+        <button id="produto-comprar" class="btn-primary">COMPRAR</button>
+      </div>
+    </section>
+
+    <p id="produto-erro" hidden>Peça não encontrada. <a href="index.html">Voltar pro catálogo</a>.</p>
+
+  </main>
+
+  <footer>
+    <span>KRETEK © 2026</span>
+  </footer>
+
+  <script src="produto.js"></script>
+</body>
+</html>
